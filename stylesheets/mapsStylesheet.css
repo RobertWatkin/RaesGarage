@@ -1,3 +1,8 @@
+.content{
+    padding-bottom: 50px;
+    height: 550px;
+}
+
 .map{
   border-radius: 12px;
   width: 400px;
@@ -5,11 +10,51 @@
 }
 
 .mapBox{
-    margin:auto;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  float: left;
   width: 400px;
   height: 450px;
   border-radius: 12px;
   border: 2px solid #555;
+}
+
+.mapsDetails{
+  float: right;
+  border-top: 2px solid #ccc;
+}
+
+.mapsDetails p{
+  margin-top: 15px;
+}
+
+.mapsDetails h1{
+  font-weight: bold;
+  font-size: 50px;
+  margin-top: 15px;
+}
+
+
+.outerDiv {
+  padding-top: 100px;
+  margin: auto;
+  height: 550px;
+  width: 650px;
+}
+
+@media screen and (max-width: 700px){
+  .outerDiv{
+    width: 400px;
+    height: 800px;
+  }
+
+  .content{
+    height: 800px;
+  }
+
+  .mapsDetails {
+    float: none;
+  }
+
+  .mapBox{
+    margin-top: 50px;
+  }
 }
