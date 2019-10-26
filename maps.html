@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Home</title>
+  <link rel="stylesheet" href="stylesheets/headerFooterStylesheet.css">
+  <link rel="stylesheet" href="stylesheets/mapsStylesheet.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $(".hamburger-btn .fa-times").hide();
+
+    $(".hamburger-btn .fa-bars").click(function(){
+      $(this).hide();
+      $(".hamburger-btn .fa-times").show();
+      $(".mob ul").addClass("active");
+    });
+
+    $(".hamburger-btn .fa-times").click(function(){
+      $(this).hide();
+      $(".hamburger-btn .fa-bars").show();
+      $(".mob ul").removeClass("active");
+    });
+    });
+  </script>
+</head>
+<body>
+
+<div class="container">
+  <nav class="desk">
+    <ul>
+      <li><a href="index.html">home</a></li>
+      <li><a href="about.html">about us</a></li>
+      <li class="active"><a href="maps.html">maps</a></li>
+      <li><a href="enquire.html">Enquire Now</a></li>
+      <li><a href="contact.html">contact us</a></li>
+    </ul>
+  </nav>
+
+  <nav class="mob">
+    <div class="hamburger-btn">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+        <i class="fa fa-times" aria-hidden="true"></i>
+    </div>
+
+    <ul>
+        <a href="#"><li class="active">home</li></a>
+        <li><a href="#">about us</a></li>
+        <li><a href="#">maps</a></li>
+        <li><a href="#">get a quote</a></li>
+        <li><a href="#">contact us</a></li>
+    </ul>
+  </nav>
+
+  <div class="parallax">
+    <div class"titleBoxPositioner">
+      <div class="titleBox">
+        <img src="images/mot-logo.png" alt="mot logo image">
+        <div>
+          <h1>RAES<br />GARAGE</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="outerDiv">
+
+
+      <div class="mapBox">
+        <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1140.2975769593197!2d-1.5745078417204772!3d55.137863295098335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487e0d280d70b7b1%3A0x7bf5197f116238aa!2sRae&#39;s%20Mot%20%26%20Service%20Centre%20LTD!5e0!3m2!1sen!2suk!4v1572114958626!5m2!1sen!2suk" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="quickLinks">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="index.html">home</a></li>
+        <li><a href="about.html">about us</a></li>
+        <li><a href="maps.html">maps</a></li>
+        <li><a href="enquire.html">Enquire Now</a></li>
+        <li><a href="contact.html">contact us</a></li>
+      </ul>
+    </div>
+
+    <div class="footerLogo">
+      <img src="images/mot-logo.png" alt="mot logo image">
+      <div>
+        <h2>RAES<br />GARAGE</h2>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
