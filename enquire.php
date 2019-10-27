@@ -5,39 +5,6 @@ __________      ___.                  __     __      __         __   __   .__
  |    |   (  <_> ) \_\ \  ___/|  | \/|  |    \        /  / __ \|  | |    <|  |   |  \
  |____|_  /\____/|___  /\___  >__|   |__|     \__/\  /  (____  /__| |__|_ \__|___|  /
 -->
-<?php
-
-  $result="";
-  print "bud";
-  if (isset($_POST['submit'])){
-    print "button pressed";
-    require 'php/PHPMailerAutoload.php';
-    $mail = new PHPMailer;
-
-    $mail->Host='smtp.gmail.com';
-    $mail->Port=587;
-    $mail-$SMTPAuth=true;
-    $mail->SMTPSecure='tls';
-    $mail->Username='RaesGarageEnquireForm@gmail.com';
-    $mail->Password='password123#';
-
-    $mail->setFrom($_POST['mail'],$_POST['name']);
-    $mail->addAddress('robert_watkin@yahoo.co.uk');
-    $mail->addReplyTo($_POST['mail'],$_POST['name']);
-
-    $mail->isHTML(true);
-    $mail->Subject='Form Submission: '.$_POST['Subject'];
-    $mail->Body='<h1 align=center>Name : '.$_POST['name'].'<br>Email : '.$_POST['mail']/'<br>Message: '.$_POST['message'].'</h1>';
-
-    if (!$mail->send()){
-      $result="Something went wrong. Please try again.";
-    }
-    else{
-      $result="Thanks ".$_POST['name']." for contacting us. We'll get back to you soon!";
-    }
-  }
-
-?>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -105,25 +72,69 @@ __________      ___.                  __     __      __         __   __   .__
 
   <div class="content">
     <div class="formBox">
-      <form action="" method="post">
+      <form id="mailForm" action="" method="post">
 
         <label for="name">Name</label>
-        <input type="text" id="fname" name="name" placeholder="Your name..">
+        <input type="text" id="name" name="name" placeholder="Your name..">
 
         <label for="email">Your Email</label>
-        <input type="text" id="lname" name="mail" placeholder="Your email address (so we can get back to you)...">
+        <input type="text" id="email" name="email" placeholder="Your email address (so we can get back to you)...">
 
         <label for="subject">Subject</label>
-        <input type="text" name="Subject" placeholder="Subject...">
+        <input type="text" id="subject" name="subject" placeholder="Subject...">
 
         <label for="message">Message</label>
-        <textarea id="message" name="comment" placeholder="Write something.." style="height:200px"></textarea>
+        <textarea id="body" name="comment" placeholder="Write something.." style="height:200px"></textarea>
 
-        <input type="submit" value="submit" value="Send">
+        <input type="button" onclick="sendEmail()" value="submit" value="Send">
       </form>
-      <h1><?= $result; ?></h1>
     </div>
   </div>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+
+
+    function sendEmail(){
+      console.log('sending...');
+        var name = $('#name');
+        var email = $('#email');
+        var subject = $('#subject');
+        var body = $('#body');
+
+        if (isNotEmpty(name) && isNotEmpty(email) && isNotEmpty(subject) && isNotEmpty(body)){
+            console.log('passedcondition');
+            $.ajax({
+              url: 'sendEmail.php',
+              method: 'POST',
+              // remvoed the datatype of json
+              data: {
+                name: name.val(),
+                email: email.val(),
+                subject: subject.val(),
+                body: body.val()
+              }, success: function (response) {
+                console.log(response);
+              },
+              error: function(xhr, status, error){
+                console.log("status: " + status);
+                console.log("error: " + error);
+              }
+            });
+        }
+
+    }
+
+    function isNotEmpty(caller){
+      if (caller.val() == ""){
+        caller.css('border','2px solid red');
+        return false;
+      }else{
+        caller.css('border','')
+      }
+      return true;
+    }
+  </script>
 
   <footer>
     <div class="quickLinks">
