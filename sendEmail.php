@@ -1,5 +1,6 @@
 <?php
 
+  echo json_encode("hello");
 
   use PHPMailer\PHPMailer\PHPMailer;
 
